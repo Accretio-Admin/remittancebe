@@ -42,7 +42,6 @@ const totalAccumulatedAmountByDate = async (daily=false) => {
     // const transactions = await LandbankTrasaction.paginate(filter, options);;
     // return transactions;
 };
-
 const checkDuplicatedInLastXMinutes = async (minutes=10, txInfo) => {
     created = {
         $gte: new Date(new Date() - minutes * 60 * 1000)

@@ -88,6 +88,11 @@ const editApiGroupById = async (groupId, updateBody) => {
     if (!apiGroup) {
         throw new ApiError(httpStatus.NOT_FOUND, 'API group not found');
     }
+    const groupIsInUse = await ApiTokens.find({endpointGroupId: ObjectId(groupId)}).count();
+    const endpointsInUse = await ApiGroups.findById(groupId);
+    if(groupIsInUse > 0 && updateBody.endpoints.length < endpointsInUse.endpoints.length){
+        throw new ApiError(httpStatus.NOT_FOUND, 'API group is in use and its endpoints cannot be deleted.');
+    }
     Object.assign(apiGroup, updateBody);
     await apiGroup.save();
     return apiGroup;

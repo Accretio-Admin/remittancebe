@@ -4,6 +4,7 @@ const { apiToken, tokenService, userService } = require('../services');
 const pick = require('../utils/pick');
 const { tokenTypes } = require('../config/tokens');
 const ApiError = require('../utils/ApiError');
+const { activeEndpoints } = require('../config/roles');
 
 const createToken = catchAsync(async (req, res) => {
     // createApiToken
@@ -61,6 +62,10 @@ const editApiToken = catchAsync(async (req, res) => {
     const tokenResponse = await apiToken.editTokenById(req.params.code, req.body);
     res.send(tokenResponse);
 });
+const getActiveEndpoints = catchAsync(async (req, res) => {
+    const endpoints = activeEndpoints;
+    res.send(endpoints);
+});
 
 module.exports = {
     createToken,
@@ -70,5 +75,6 @@ module.exports = {
     editApiToken,
     getGroupApiEndpoints,
     editGroupApiEndpoints,
-    deleteGroupApiEndpoint
+    deleteGroupApiEndpoint,
+    getActiveEndpoints
 };
