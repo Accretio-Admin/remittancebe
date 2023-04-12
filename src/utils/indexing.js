@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 
-const connectionString = 'mongodb://remittancev2:1bIvCxexGS0VyDlzYc5RG6xXu7zBOO5ThWz4zHLa1Ap8GMWvqIcGrRrhilIElA5RSIRYbf1es3WpACDbyNiWnQ==@remittancev2.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@remittancev2@';
-
+// const connectionString = 'mongodb://remittancev2:1bIvCxexGS0VyDlzYc5RG6xXu7zBOO5ThWz4zHLa1Ap8GMWvqIcGrRrhilIElA5RSIRYbf1es3WpACDbyNiWnQ==@remittancev2.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@remittancev2@';
+const connectionString = 'mongodb://remittance:XmC4KuGp9bfd9vXlyX02TeqGD9VkxSuzHRAnAzbiRmVSgfqcbUymCfdh3sYCzILKvJlalIry39cAACDbvt3CLQ==@remittance.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@remittance@'
 async function main() {
     const client = await MongoClient.connect(connectionString, { useUnifiedTopology: true });
     const dbName = 'test';
