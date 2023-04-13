@@ -9,14 +9,18 @@ async function main() {
 
   const db = client.db(DATABASE_NAME);
   const collections = [
-    'AccessLevels',
-    'Credentials',
-    'LandbankCredentialsAssignment',
-    'LandbankTransaction',
-    'Logs',
-    'Token',
-    'User',
-    'UserLimitations',
+    'accesslevels',
+    'credentials',
+    'landbankcredentialsassignments',
+    'landbanktransactions',
+    'logs',
+    'tokens',
+    'users',
+    'userlimitations',
+    'apigroups',
+    'apitokens',
+    'configs',
+    'greenregions'
   ];
 
   for (const collectionName of collections) {
