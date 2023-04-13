@@ -10,7 +10,7 @@
 		"node": ">=12.0.0"
 	},
 	"scripts": {
-		"start": "pm2 start ecosystem.config.json --no-daemon",
+		"start": "cross-env NODE_ENV=development nodemon src/index.js",
 		"dev": "cross-env NODE_ENV=development nodemon src/index.js",
 		"coverage": "jest -i --coverage",
 		"coverage:coveralls": "jest -i --coverage --coverageReporters=text-lcov | coveralls",
