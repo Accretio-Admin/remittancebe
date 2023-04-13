@@ -37,7 +37,7 @@ module.exports = {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
   mongoose: {
-    url:  `mongodb://remittancev2:1bIvCxexGS0VyDlzYc5RG6xXu7zBOO5ThWz4zHLa1Ap8GMWvqIcGrRrhilIElA5RSIRYbf1es3WpACDbyNiWnQ==@remittancev2.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@remittancev2@` + (envVars.NODE_ENV === 'test' ? '-test' : ''),
+    url: envVars.MONGODB_URL + (envVars.NODE_ENV === 'test' ? '-test' : ''),
     options: {
       useCreateIndex: true,
       useNewUrlParser: true,
