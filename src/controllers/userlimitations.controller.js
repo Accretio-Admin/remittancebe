@@ -30,10 +30,12 @@ const deleteLimitation = catchAsync(async (req, res) => {
     res.send(limit);
 });
 const getBulkLimitsById = catchAsync(async (req, res) => {
-    // filter = {$or: fetchLevel};
     const bulkIds = req.params.userIds.split(',');
-    const query = bulkIds.map(e=> ObjectId(`${e}`))
-    const filter = { userId: {$in: query} , deleted: false};
+
+    // Convert user IDs to ObjectIds, but use the $expr operator in the filter
+    const query = bulkIds.map(e => ObjectId(`${e}`));
+
+    const filter = { $expr: { $and: [{ $in: ["$userId", query] }, { $eq: ["$deleted", false] }] }};
     const limits = await userLimitationsService.getBulkLimitsById(filter);
     res.send(limits);
 });
